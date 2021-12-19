@@ -11,9 +11,7 @@ build.
 ## Build Instructions
 ```shell
 cd packer
-export AWS_DEFAULT_REGION=us-gov-west-1
-export AWS_ACCESS_ID=YOURACCESSID
-export AWS_SECRET_KEY=yoUR/seCRetKey
+export PACKER_TOKEN="yourpackertoken"
 ./build.sh
 ```
 
@@ -60,8 +58,7 @@ Until IDG is hosting the rhel-7.9-dvd ISO file, you'll want to download the ISO 
 #### Packer template.json
 1. Establish variables
 2. Establish builder
-    1. Virtualbox-ISO
-    2. Headless
+    1. proxmox
     3. Resources
     4. Boot command
     5. Shutdown command
@@ -71,30 +68,21 @@ Until IDG is hosting the rhel-7.9-dvd ISO file, you'll want to download the ISO 
 3. Establish provisioners
     1. sudoers - defines who is allowed to sudo
     2. cloud.cfg - Establishes data for cloud-init
-    3. ice-bundle.pem - Required ICE certificates
-    4. dhs-bundle.pem - Required DHS certificates
     5. ansible.sh 
        1. Store DNA
        2. Copy files to appropriate locations
        3. Restart Network Manager
        4. Copy certificate bundles
        5. Install certificates
-       6. Disable mirrors
        7. Install PIP3
        8. Enable SeLinux PIP
        9. Install Ansible
     6. init.yaml
        1. Enable dracut FIPS
        2. Change SKEL permissions
+       3. yum update
     7. cleanup.sh - Remove unnecessary files and shrink filesystem
-4. Establish post processors
-   1. Make a local OVA copy
-   2. install_image.sh
-      1. Upload OVA to S3
-      2. Import OVA as AMI
-      3. Wait for import
-      4. Rename AMI to Cu
-      5. Wait for rename
+
 
 #### ks.cfg (Kickstart)
 1. Install from CDROM
