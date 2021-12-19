@@ -2,9 +2,11 @@
 
 ## Purpose
 The Copper image is intended to convert a vendor-provided ISO disk into
-an AWS AMI file. It's meant to be as bare-bones as possible. The absolute
-minimum of packages is installed in the Copper image to save time and
-resources on bare metal.
+an AWS AMI file on an air-gapped environment. It's meant to be as bare-bones 
+as possible. The absolute minimum of packages is installed in the Copper image
+to save time and resources on bare metal. However, it requires the full 
+everything-DVD iso since certain packages aren't available during the air-gapped
+build.
 
 ## Build Instructions
 ```shell
