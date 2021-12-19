@@ -11,4 +11,4 @@ sed -i -E "s|\-\-password=(.*)|--password=$hash|g" http/ks-proxmox.cfg
 echo ${PROXMOX_TOKEN}
 packer build --force proxmox.pkr.hcl
 
-sed -i -E "s|\-\-password=(.*)|--password=randpass|g" http/ks.cfg
+sed -i -E "s|\-\-password=(.*)|--password=randpass|g" http/ks-proxmox.cfg
